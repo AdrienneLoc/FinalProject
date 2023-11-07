@@ -1,0 +1,3 @@
+if #2 App Engine, part C is too time consuming, just cut it out/skip it out
+      leave this one until the end
+q2) in order to qualify for the 15 points, the application has to be fully complete and runnable
