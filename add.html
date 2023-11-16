@@ -1,0 +1,50 @@
+<html>
+<body style="font-family:arial">
+
+<img src="https://www.pchf1.org/wp-content/uploads/2022/08/new.jpg" width=520 height=300></img>
+
+<BR><BR>
+<FORM NAME="search" ACTION="http://localhost:3000/add" METHOD="post">
+
+     <fieldset style="width: 500px">
+         <legend><b>Listing</b></legend>
+         <br><br>
+
+          Rental ID:
+         <INPUT TYPE="TEXT" NAME="rentalID" VALUE="" >
+         <br><br>
+
+          Monthly Rent:
+         <INPUT TYPE="TEXT" NAME="rent" VALUE="" >
+         <br><br>
+
+	  Street Address:
+         <INPUT TYPE="TEXT" NAME="address" VALUE="" >
+         <br><br>
+
+          ZIP code:
+         <INPUT TYPE="TEXT" NAME="zip" VALUE="" >
+         <br><br>
+
+          Description:
+         <INPUT TYPE="TEXT" NAME="detail" VALUE="" >
+         <br><br>
+
+
+         Type:
+               <SELECT NAME="type">
+                        <OPTION SELECTED>House</OPTION>
+                        <OPTION>Townhome</OPTION>
+                        <OPTION>Apartment/Condo/Co-op</OPTION>
+                </SELECT>
+         <br><br>
+
+
+         <div align="center"><INPUT TYPE="submit" VALUE="Add Listing"></div>
+     </fieldset>
+</FORM>
+
+<BR><BR><a href=http://localhost:3000/main>Main Menu</a><BR><BR><BR>
+
+</body>
+</html>
