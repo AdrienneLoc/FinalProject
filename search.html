@@ -1,17 +1,31 @@
 <html>
 <body style="font-family:arial">
 
-<h3 style="color:#ADD8E6">Search Listings by address</h3>
+<h3 style="color:#ADD8E6">Search Listings</h3>
 
 
 <BR><BR>
-<FORM NAME="search" ACTION="http://localhost:3000/search" METHOD="post">
+<FORM NAME="search1" ACTION="http://localhost:3000/search" METHOD="post">
 
      <fieldset style="width: 500px">
-         <legend><b>Search</b></legend>
+         <legend><b>Search by description</b></legend>
          <br><br>
-          Enter part of an address to search your listings:
+          Enter a desired keyword or phrase:
          <INPUT TYPE="TEXT" NAME="detail" VALUE=" " >
+         &nbsp;&nbsp;&nbsp;
+         <INPUT TYPE="submit" VALUE="Go">
+     </fieldset>
+</FORM>
+
+
+<BR>
+<FORM NAME="search2" ACTION="http://localhost:3000/search" METHOD="post">
+
+     <fieldset style="width: 500px">
+         <legend><b>Search by ZIP code</b></legend>
+         <br><br>
+          Enter desired ZIP code:
+         <INPUT TYPE="TEXT" NAME="ZIP" VALUE=" " >
          &nbsp;&nbsp;&nbsp;
          <INPUT TYPE="submit" VALUE="Go">
      </fieldset>
@@ -21,5 +35,4 @@
 
 </body>
 </html>
-
 
