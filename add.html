@@ -1,14 +1,13 @@
-
 <html>
 <body style="font-family:arial">
 
 <img src="https://www.pchf1.org/wp-content/uploads/2022/08/new.jpg" width=520 height=300></img>
 
 <BR><BR>
-<FORM NAME="search" ACTION="http://localhost:3000/add" METHOD="post">
+<FORM NAME="add" ACTION="http://localhost:3000/add" METHOD="post">
 
      <fieldset style="width: 500px">
-         <legend><b>Listing</b></legend>
+         <legend><b>Listing Info</b></legend>
          <br><br>
 
          Listing ID:
@@ -19,13 +18,33 @@
          <INPUT TYPE="TEXT" NAME="description" VALUE="" >
          <br><br>
 
-         Price:
-         <INPUT TYPE="TEXT" NAME="price" VALUE="" >
+         Date Available:
+         <INPUT TYPE="TEXT" NAME="date" VALUE="" >
          <br><br>
 
-         Year Built:
-         <INPUT TYPE="TEXT" NAME="year" VALUE="" >
+         Rent:
+         <INPUT TYPE="TEXT" NAME="rent" VALUE="" >
          <br><br>
+
+         Utilities are the responsibility of the:
+               <SELECT NAME="utilities">
+                        <OPTION SELECTED> tenant </OPTION>
+                        <OPTION> landlord </OPTION>
+                </SELECT>
+         <br><br>
+
+
+     </fieldset>
+
+     <br>
+     <fieldset style="width: 500px">
+         <legend><b>House Info</b></legend>
+         <br><br>
+
+         House ID:
+         <INPUT TYPE="TEXT" NAME="houseID" VALUE="" >
+         <br><br>
+
 
          Stories:
                <SELECT NAME="stories">
@@ -39,46 +58,51 @@
 
          Type:
                <SELECT NAME="type">
-                        <OPTION SELECTED>House</OPTION>
-                        <OPTION>Townhome</OPTION>
-                        <OPTION>Apartment/Condo/Co-op</OPTION>
+                        <OPTION SELECTED>Single-Family</OPTION>
+                        <OPTION>Townhouse</OPTION>
+                        <OPTION>Duplex</OPTION>
+                        <OPTION>Apartment</OPTION>
+                        <OPTION>Condo</OPTION>
                 </SELECT>
          <br><br>
 
 
-         Parking:
+         Number of bedrooms:
+         <INPUT TYPE="TEXT" NAME="num_bedrooms" VALUE="" >
+         <br><br>
+
+	 Number of bathrooms:
+         <INPUT TYPE="TEXT" NAME="num_bathrooms" VALUE="" >
+         <br><br>
+
+
+	 Basement:
+               <SELECT NAME="basement">
+                        <OPTION SELECTED>Finished</OPTION>
+                        <OPTION>Unfinished</OPTION>
+                </SELECT>
+         <br><br>
+
+
+         Parking availability:
                <SELECT NAME="parking">
-                        <OPTION SELECTED>None</OPTION>
-                        <OPTION>Driveway</OPTION>
-                        <OPTION>Garage</OPTION>
+                        <OPTION SELECTED>Yes</OPTION>
+                        <OPTION>No</OPTION>
                 </SELECT>
          <br><br>
-
 
          Address:
          <INPUT TYPE="TEXT" NAME="address" VALUE="" >
          <br><br>
 
-         Street Name:
-         <INPUT TYPE="TEXT" NAME="street" VALUE="" >
-         <br><br>
 
          Postal Code:
          <INPUT TYPE="TEXT" NAME="ZIP" VALUE="" >
          <br><br>
-
-         City Name:
-         <INPUT TYPE="TEXT" NAME="city" VALUE="" >
-         <br><br>
-
-         Country:
-         <INPUT TYPE="TEXT" NAME="country" VALUE="" >
-         <br><br>
-
-
-
-         <div align="center"><INPUT TYPE="submit" VALUE="Add Listing"></div>
      </fieldset>
+
+<br>
+<div align="left"><INPUT TYPE="submit" VALUE="Add House Listing"></div>
 </FORM>
 
 <BR><BR><a href=http://localhost:3000/main>Main Menu</a><BR><BR><BR>
