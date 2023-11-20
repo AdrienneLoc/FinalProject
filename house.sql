@@ -8,7 +8,8 @@ create table house (
     parking       varchar(5)    check(parking in('yes', 'no')),
     utilities     varchar(20)   check(utilities in('tenant', 'landlord')),
     address       text          not null,
-    postal_code   integer       check(postal_code > 19004 and postal_code < 19444)
+    postal_code   integer       check(postal_code > 19004 and postal_code < 19444),
+    primary key(house_id)
 );
 
 -- inserting sample values into table
