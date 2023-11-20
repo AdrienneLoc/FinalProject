@@ -4,8 +4,8 @@ create table listing (
     agent_id        integer         not null,
     house_id        integer         not null,
     description     text            not null,
-    date_listed     date            check(date_listed between date('2000-01-01') and sysdate()),
-    rent            decimal(10,2)   check(rent > 0),
+    date_listed     date            check(date_listed between date('2000-01-01') and sysdate()), -- checking for valid date
+    rent            decimal(10,2)   check(rent > 0), 
     date_available  date            not null, 
     primary key(listing_id),
     foreign key(agent_id) references agent(agent_id),
@@ -32,3 +32,6 @@ insert into listing values(1759, 123456, 9102, '2 Bedroom 1 Bath complete remode
                                                 Vaulted Living area. Tall baseboards through out, and New Luxury Vinyl plank flooring. New windows to help keep your utility bills down, hot water heater. 
                                                 HVAC recently services and new AC outside unit (condenser) installed. Large backyard. Close to Six Flags, Hurricane Harbor, Globe Life Field, AT&T stadium, and more! Great Location!',
                                                 '2023-11-14', 3789.00, '2023-11-18')
+                                                
+                                                
+/* LINKS FOR DESCRIPTIONS ARE LOCATED IN THE LISTING EXCEL FILE */

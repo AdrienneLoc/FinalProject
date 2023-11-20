@@ -1,14 +1,14 @@
 -- creating table for agent
 create table house (
 	house_id      integer       not null,
-    stories       integer       check(stories > 0),
+    stories       integer       check(stories > 0), -- number of floors
     type          varchar(100)  check(type in('Single-Family', 'Apartment', 'Condo', 'Townhouse', 'Duplex')),
-    bedrooms      integer       check(bedrooms > 0),
-    bathrooms     integer       check(bathrooms > 0),
-    parking       varchar(5)    check(parking in('yes', 'no')),
-    utilities     varchar(20)   check(utilities in('tenant', 'landlord')),
+    bedrooms      integer       check(bedrooms > 0), -- number of bedrooms
+    bathrooms     integer       check(bathrooms > 0), -- number of bathrooms
+    parking       varchar(5)    check(parking in('yes', 'no')), -- is there parking?
+    utilities     varchar(20)   check(utilities in('tenant', 'landlord')), -- who pays?
     address       text          not null,
-    postal_code   integer       check(postal_code > 19004 and postal_code < 19444),
+    postal_code   integer       check(postal_code > 19004 and postal_code < 19444), -- restricting to Philadeplhia
     primary key(house_id)
 );
 
