@@ -16,8 +16,8 @@
          <INPUT TYPE="TEXT" NAME="listingID" VALUE="" >
          <br><br>
 
-         Description:
-         <INPUT TYPE="TEXT" NAME="description" VALUE="" >
+         Description: <br>
+         <TEXTAREA NAME="description" ROWS="7" COLS="45"></TEXTAREA>
          <br><br>
 
          Date Listed:
@@ -29,11 +29,10 @@
          <br><br>
 
          Utilities are the responsibility of the:
-               <SELECT NAME="utilities">
-                        <OPTION SELECTED> tenant </OPTION>
-                        <OPTION> landlord </OPTION>
-                </SELECT>
+                <INPUT TYPE="radio" NAME="utilities" VALUE="tenant"> tenant
+		<INPUT TYPE="radio" NAME="utilities" VALUE="landlord"> landlord
          <br><br>
+
 
          Date Available:
          <INPUT TYPE="TEXT" NAME="date_available" VALUE="" >
@@ -81,19 +80,17 @@
          <INPUT TYPE="TEXT" NAME="num_bathrooms" VALUE="" >
          <br><br>
 
-
          Parking availability:
-               <SELECT NAME="parking">
-                        <OPTION SELECTED>Yes</OPTION>
-                        <OPTION>No</OPTION>
-                </SELECT>
+                <INPUT TYPE="radio" NAME="parking" VALUE="yes"> yes
+		<INPUT TYPE="radio" NAME="parking" VALUE="no"> no
          <br><br>
+
 
 	 Basement:
                <SELECT NAME="basement">
                         <OPTION SELECTED>Finished</OPTION>
                         <OPTION>Unfinished</OPTION>
-		        <OPTION>n/a</OPTION>
+                        <OPTION>n/a</OPTION>
                 </SELECT>
          <br><br>
 
