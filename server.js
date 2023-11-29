@@ -23,7 +23,7 @@ var mysql = require('mysql');
 var con = mysql.createConnection({
   host: "localhost",
   user: "root",
-  password: "*********",  // use your own MySQL root password
+  password: "G!nP10bgq3C-v",  // use your own MySQL root password
   database: "finalproject"
 });
 
@@ -58,6 +58,48 @@ app.get("/", function (req, res) {
     readAndServe("./login.html",res)
 
 });
+
+
+app.get("/login", function (req, res) {
+    readAndServe("./login.html",res)
+
+});
+
+app.get("/main", function (req, res) {
+    readAndServe("./main.html",res)
+
+});
+
+app.get("/search", function (req, res) {
+    readAndServe("./search.html",res)
+
+});
+
+app.get("/add", function (req, res) {
+    readAndServe("./add.html",res)
+
+});
+
+app.get("/update", function (req, res) {
+    readAndServe("./update.html",res)
+
+});
+
+app.get("/delete", function (req, res) {
+    readAndServe("./delete.html",res)
+
+});
+
+/* ******************************************************************************************
+This routing table handles all the post request sent from the browser (Adrienne)
+********************************************************************************************* */
+app.post("/add", function (req, res) {
+    var listingId = req.body.listingID, //going to create a global variable to store agentId
+
+})
+/* ******************************************************************************************
+This handles specific GET requests from the browser (Adrienne)
+********************************************************************************************* */
 // dynamically creating view page (Adrienne)
 app.get("/listings", function (req, res) {
     // sql query to be used
@@ -101,34 +143,4 @@ app.get("/listings", function (req, res) {
             res.send(html_body);                // send query results back to the browser
         }
     });
-});
-
-app.get("/login", function (req, res) {
-    readAndServe("./login.html",res)
-
-});
-
-app.get("/main", function (req, res) {
-    readAndServe("./main.html",res)
-
-});
-
-app.get("/search", function (req, res) {
-    readAndServe("./search.html",res)
-
-});
-
-app.get("/add", function (req, res) {
-    readAndServe("./add.html",res)
-
-});
-
-app.get("/update", function (req, res) {
-    readAndServe("./update.html",res)
-
-});
-
-app.get("/delete", function (req, res) {
-    readAndServe("./delete.html",res)
-
 });
