@@ -23,7 +23,7 @@ var mysql = require('mysql');
 var con = mysql.createConnection({
   host: "localhost",
   user: "root",
-  password: "G!nP10bgq3C-v",  // use your own MySQL root password
+  password: "***********",  // use your own MySQL root password
   database: "finalproject"
 });
 
@@ -93,10 +93,10 @@ app.get("/delete", function (req, res) {
 /* ******************************************************************************************
 This routing table handles all the post request sent from the browser (Adrienne)
 ********************************************************************************************* */
-app.post("/add", function (req, res) {
+/*app.post("/add", function (req, res) {
     var listingId = req.body.listingID, //going to create a global variable to store agentId
 
-})
+});*/
 /* ******************************************************************************************
 This handles specific GET requests from the browser (Adrienne)
 ********************************************************************************************* */
