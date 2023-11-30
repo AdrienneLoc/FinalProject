@@ -23,7 +23,7 @@ var mysql = require('mysql');
 var con = mysql.createConnection({
   host: "localhost",
   user: "root",
-  password: "****************",  // use your own MySQL root password
+  password: "************",  // use your own MySQL root password
   database: "finalproject"
 });
 
@@ -93,12 +93,27 @@ app.get("/delete", function (req, res) {
 /* ******************************************************************************************
 This routing table handles all the post request sent from the browser (Adrienne)
 ********************************************************************************************* */
-/*app.post("/login", function (req, res) {
+app.post("/login", function (req, res) {
+    //getting login information from user
     var username = req.body.username;
     var password = req.body.password;
 
-    var sql_query = "select agent_id, email, password from agent where email  '%" + detail + "%'";
-})*/
+    //query to be used
+    var sql_query = "select agent_id, email, password from agent where email = '" + username + "' and password = '" + password + "'";
+
+    con.query(sql_query, function (err, result, fields) {
+        //no row returned means login info is incorrect or empty, throw an error
+        if (result[0].username = null) {
+            throw err;
+        }
+        if (err)
+            throw err;
+        else {
+            usernameID = result[0].agent_id; //storing agent id to specialize the other pages
+            res.redirect('/main'); //if login is correct, take agent to the main page
+        }
+    })
+});
 /*app.post("/add", function (req, res) {
     var listingId = req.body.listingID, //going to create a global variable to store agentId
 
