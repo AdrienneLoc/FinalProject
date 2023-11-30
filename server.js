@@ -23,7 +23,7 @@ var mysql = require('mysql');
 var con = mysql.createConnection({
   host: "localhost",
   user: "root",
-  password: "***********",  // use your own MySQL root password
+  password: "****************",  // use your own MySQL root password
   database: "finalproject"
 });
 
@@ -34,7 +34,7 @@ con.connect(function(err) {
   console.log("Connected to MySQL");
 });
 
-
+var userNameID= null; // variable to store the agent ID
 
 //******************************************************************************
 //*** File system module used for accessing files in nodejs (Nadin)
@@ -93,6 +93,12 @@ app.get("/delete", function (req, res) {
 /* ******************************************************************************************
 This routing table handles all the post request sent from the browser (Adrienne)
 ********************************************************************************************* */
+/*app.post("/login", function (req, res) {
+    var username = req.body.username;
+    var password = req.body.password;
+
+    var sql_query = "select agent_id, email, password from agent where email  '%" + detail + "%'";
+})*/
 /*app.post("/add", function (req, res) {
     var listingId = req.body.listingID, //going to create a global variable to store agentId
 
