@@ -23,7 +23,7 @@ var mysql = require('mysql');
 var con = mysql.createConnection({
   host: "localhost",
   user: "root",
-  password: "****************",  // use your own MySQL root password
+  password: "***********",  // use your own MySQL root password
   database: "finalproject"
 });
 
@@ -115,7 +115,29 @@ app.post("/login", function (req, res) {
     })
 });
 /*app.post("/add", function (req, res) {
-    var listingId = req.body.listingID, //going to create a global variable to store agentId
+    //variables for listing table
+    var listingId = req.body.listingID,
+        description = req.body.description,
+        date_listed = req.body.date_listed,
+        rent = req.body.rent,
+        utilities = req.body.utilities,
+        date_available = req.body.date_available;
+
+    //variables for house table
+    var house_id = req.body.houseID,
+        stories = req.body.stories,
+        type = req.body.type,
+        num_bedrooms = req.body.num_bedrooms,
+        num_bathrooms = req.body.num_bathrooms,
+        parking = req.body.parking,
+        basement = req.body.basement,
+        address = req.body.address,
+        postal_code = req.body.postal_code;
+
+    var house_sql_query = "insert into house values(" + house_id + ", " + stories + ", '" + type "', " + num_bedrooms + ", " + num_bathrooms + ", '" + parking + "', '" + basement + "', '" + address + "', " + postal_code + ")";
+    var listing_sql_query = "insert into listing values(" + listingId + ", " + usernameID + ", " + house_id + ", '" + description + "', '" + date_listed + "' " + rent + ", '" + utilities + "', '" + date_available + "')";
+
+
 
 });*/
 /* ******************************************************************************************
