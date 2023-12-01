@@ -23,7 +23,7 @@ var mysql = require('mysql');
 var con = mysql.createConnection({
   host: "localhost",
   user: "root",
-  password: "************",  // use your own MySQL root password
+  password: "****************",  // use your own MySQL root password
   database: "finalproject"
 });
 
@@ -34,7 +34,7 @@ con.connect(function(err) {
   console.log("Connected to MySQL");
 });
 
-var userNameID= null; // variable to store the agent ID
+var usernameID= null; // variable to store the agent ID
 
 //******************************************************************************
 //*** File system module used for accessing files in nodejs (Nadin)
@@ -124,8 +124,7 @@ This handles specific GET requests from the browser (Adrienne)
 // dynamically creating view page (Adrienne)
 app.get("/listings", function (req, res) {
     // sql query to be used
-    var sql_query = "select listing_id, house_id, address, postal_code, description, date_listed, rent, utilities, date_available from listing natural join house";
-
+    var sql_query = "select listing_id, house_id, address, postal_code, description, date_listed, rent, utilities, date_available from listing natural join house where agent_id = " + usernameID +";";
     con.query(sql_query, function (err, result, fields) {
         if (err)
             throw err;
@@ -157,7 +156,7 @@ app.get("/listings", function (req, res) {
             html_body = html_body + "</TABLE>";
 
             //** finish off the html body with a link back to the search page
-            html_body = html_body + "<BR><BR><BR><a href=http://localhost:3000/>Main Menu</a><BR><BR><BR>";
+            html_body = html_body + "<BR><BR><BR><a href=http://localhost:3000/main>Main Menu</a><BR><BR><BR>";
             html_body = html_body + "</BODY></HTML>";
 
             console.log(html_body);             // send query results to the console
