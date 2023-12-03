@@ -192,7 +192,7 @@ app.post("/search", function (req, res) {
                  
 
 				  //** finish off the html body with a link back to the search page
-				  html_body = html_body + "<BR><BR><BR><a href=http://localhost:3000/>Main Menu</a><BR><BR><BR>";
+				  html_body = html_body + "<BR><BR><BR><a href=http://localhost:3000/search>Back to search page</a><BR><BR><BR>";
 			      html_body = html_body + "</BODY></HTML>";
 
                 console.log(html_body);             // send query results to the console
@@ -243,7 +243,7 @@ app.get("/listings", function (req, res) {
 
             html_body = html_body + "</TABLE>";
 
-            //** finish off the html body with a link back to the search page
+            //** finish off the html body with a link back to the main page
             html_body = html_body + "<BR><BR><BR><a href=http://localhost:3000/main>Main Menu</a><BR><BR><BR>";
             html_body = html_body + "</BODY></HTML>";
 
