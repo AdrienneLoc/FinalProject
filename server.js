@@ -23,7 +23,7 @@ var mysql = require('mysql');
 var con = mysql.createConnection({
   host: "localhost",
   user: "root",
-  password: "***",  // use your own MySQL root password
+  password: "CXWZ1051#cxwz",  // use your own MySQL root password
   database: "finalproject"
 });
 
@@ -87,6 +87,16 @@ app.get("/update", function (req, res) {
 
 app.get("/delete", function (req, res) {
     readAndServe("./delete.html",res)
+
+});
+
+app.get("/delete_done", function (req, res) {
+    readAndServe("./delete_done.html",res)
+
+});
+
+app.get("/delete_fail", function (req, res) {
+    readAndServe("./delete_fail.html",res)
 
 });
 
@@ -202,6 +212,28 @@ app.post("/search", function (req, res) {
 });
 
 
+app.post("/delete", function (req, res) {
+
+    var listingID_for_delete = req.body.listingID_for_delete;       // extract the string received from the browser
+
+    var sql_query = "delete from listing where listing_id = 0" + listingID_for_delete + ";";
+
+    con.query(sql_query, function (err, result, fields) { // execute the SQL string
+    if (err)
+        res.send("Illegal Query" + err);                  // SQL error
+
+    else {
+                console.log(sql_query);                                   // send query results to the console
+                const affectedRows = result.affectedRows;
+                if(affectedRows>0){
+	        	res.redirect("http://localhost:3000/delete_done");}  // redirect to the page that reflects the action done
+                else{
+                	res.redirect("http://localhost:3000/delete_fail");} 	
+		
+ 
+         }
+    });
+});
 
 
 
