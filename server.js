@@ -65,6 +65,11 @@ app.get("/login", function (req, res) {
 
 });
 
+app.get("/unauthorized_access", function (req, res) {
+    readAndServe("./unauthorized_access.html",res)
+
+});
+
 app.get("/main", function (req, res) {
     readAndServe("./main.html",res)
 
@@ -99,6 +104,8 @@ app.get("/delete_fail", function (req, res) {
     readAndServe("./delete_fail.html",res)
 
 });
+
+
 
 /* ******************************************************************************************
 This routing table handles all the post request sent from the browser (Adrienne + Nadin)
