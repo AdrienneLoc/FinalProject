@@ -105,7 +105,25 @@ app.get("/delete_fail", function (req, res) {
 
 });
 
+app.get("/update_done", function (req, res) {
+    readAndServe("./update_done.html",res)
 
+});
+
+app.get("/update_fail", function (req, res) {
+    readAndServe("./update_fail.html",res)
+
+});
+
+app.get("/add_done", function (req, res) {
+    readAndServe("./add_done.html",res)
+
+});
+
+app.get("/add_fail", function (req, res) {
+    readAndServe("./add_fail.html",res)
+
+});
 
 /* ******************************************************************************************
 This routing table handles all the post request sent from the browser (Adrienne + Nadin)
@@ -167,13 +185,13 @@ app.post("/search", function (req, res) {
     var sql_query;
 
     if(detail != "" && postal_code != ""){
-    sql_query = "select listing_id, house_id, address, postal_code, description, date_listed, rent, utilities, date_available from listing natural join house where description like '%" + detail + "%' and postal_code like '%" + postal_code + "%'"; }
+    sql_query = "select listing_id, house_id, address, postal_code, description, date_listed, rent, utilities, date_available from listing natural join house where description like '%" + detail + "%' and postal_code like '%" + postal_code + "%' and agent_id = " + usernameID + ";"; }
     else if(detail != "" && postal_code == ""){
-    sql_query = "select listing_id, house_id, address, postal_code, description, date_listed, rent, utilities, date_available from listing natural join house where description like '%" + detail + "%'"; }
+    sql_query = "select listing_id, house_id, address, postal_code, description, date_listed, rent, utilities, date_available from listing natural join house where description like '%" + detail + "%' and agent_id = " + usernameID + ";"; }
     else if(postal_code != "" && detail == ""){
-    sql_query = "select listing_id, house_id, address, postal_code, description, date_listed, rent, utilities, date_available from listing natural join house where postal_code like '%" + postal_code + "%'"; }
+    sql_query = "select listing_id, house_id, address, postal_code, description, date_listed, rent, utilities, date_available from listing natural join house where postal_code like '%" + postal_code + "%' and agent_id = " + usernameID + ";"; }
     else{
-    sql_query = "select listing_id, house_id, address, postal_code, description, date_listed, rent, utilities, date_available from listing natural join house"; }
+    sql_query = "select listing_id, house_id, address, postal_code, description, date_listed, rent, utilities, date_available from listing natural join house where agent_id = " + usernameID + ";"; }
 
 
 
@@ -223,7 +241,7 @@ app.post("/delete", function (req, res) {
 
     var listingID_for_delete = req.body.listingID_for_delete;       // extract the string received from the browser
 
-    var sql_query = "delete from listing where listing_id = 0" + listingID_for_delete + ";";
+    var sql_query = "delete from listing where listing_id = 0" + listingID_for_delete + " and agent_id = " + usernameID + ";";
 
     con.query(sql_query, function (err, result, fields) { // execute the SQL string
     if (err)
