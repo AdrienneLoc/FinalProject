@@ -23,7 +23,7 @@ var mysql = require('mysql');
 var con = mysql.createConnection({
   host: "localhost",
   user: "root",
-  password: "CXWZ1051#cxwz",  // use your own MySQL root password
+  password: "G!nP10bgq3C-v",  // use your own MySQL root password
   database: "finalproject"
 });
 
@@ -138,19 +138,22 @@ app.post("/login", function (req, res) {
     var sql_query = "select agent_id, email, password from agent where email = '" + username + "' and password = '" + password + "'";
 
     con.query(sql_query, function (err, result, fields) {
-        //no row returned means login info is incorrect or empty, throw an error
-        if (result[0].username = null) {
+        if (err) {
             throw err;
         }
-        if (err)
-            throw err;
-        else {
+       //if results found, process results
+        else if (result.length > 0) {
             usernameID = result[0].agent_id; //storing agent id to specialize the other pages
             res.redirect('/main'); //if login is correct, take agent to the main page
         }
+        //take to error page if no results
+        else {
+            console.log("reached second if");
+            res.redirect('/unauthorized_access');
+        }
     })
 });
-/*app.post("/add", function (req, res) {
+app.post("/add", function (req, res) {
     //variables for listing table
     var listingId = req.body.listingID,
         description = req.body.description,
@@ -170,12 +173,36 @@ app.post("/login", function (req, res) {
         address = req.body.address,
         postal_code = req.body.postal_code;
 
-    var house_sql_query = "insert into house values(" + house_id + ", " + stories + ", '" + type "', " + num_bedrooms + ", " + num_bathrooms + ", '" + parking + "', '" + basement + "', '" + address + "', " + postal_code + ")";
-    var listing_sql_query = "insert into listing values(" + listingId + ", " + usernameID + ", " + house_id + ", '" + description + "', '" + date_listed + "' " + rent + ", '" + utilities + "', '" + date_available + "')";
-
-
-
-});*/
+    var house_sql_query = "insert into house values(" + house_id + ", " + stories + ", '" + type + "', " + num_bedrooms + ", " + num_bathrooms + ", '" + parking + "', '" + basement + "', '" + address + "', " + postal_code + ")";
+    con.query(house_sql_query, function (err, result, fields) {
+        //if any information is entered incorrectly or empty triggers a sql error
+        if (err) {
+            res.redirect('/add_fail'); //instead of becoming unavailable, redirect to fail page
+        }
+        //if adding new house into house table is successful, move on to adding the listing
+        else if (result.affectedRows = 1) {
+            console.log("ADD DONE");
+            var listing_sql_query = "insert into listing values(" + listingId + ", " + usernameID + ", " + house_id + ", '" + description + "', '" + date_listed + "', " + rent + ", '" + utilities + "', '" + date_available + "')";
+            //adding new listing into listing table
+            con.query(listing_sql_query, function (err, result, fields) {
+                console.log(listing_sql_query);
+                //if any information is entered incorrectly or is empty triggers a sql error
+                if (err) {
+                    res.redirect('/add_fail');
+                }
+                else if (result.affectedRows = 1) {
+                    res.redirect('/add_done'); //if successful, redirect to done page
+                }
+                else {
+                    res.redirect('/add_fail');
+                }
+            })
+        }
+        else {
+            res.redirect('/add_fail');
+        }
+    })
+});
 
 
 //Nadin:
