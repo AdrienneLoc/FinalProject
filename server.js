@@ -23,7 +23,7 @@ var mysql = require('mysql');
 var con = mysql.createConnection({
   host: "localhost",
   user: "root",
-  password: "***************",  // use your own MySQL root password
+  password: "************",  // use your own MySQL root password
   database: "finalproject"
 });
 
@@ -111,7 +111,7 @@ app.get("/update_done", function (req, res) {
 });
 
 app.get("/update_fail", function (req, res) {
-    readAndServe("./update_fail.html",res)
+    readAndServe("./upadate_fail.html",res)
 
 });
 
@@ -135,7 +135,7 @@ app.post("/login", function (req, res) {
     var password = req.body.password;
 
     //query to be used
-    var sql_query = "select agent_id from agent where email = '" + username + "' and password = '" + password + "'";
+    var sql_query = "select agent_id from agent where email = '" + username + "' and password = '" + password + "'" + ";";
 
     con.query(sql_query, function (err, result, fields) {
         if (err) {
@@ -173,7 +173,7 @@ app.post("/add", function (req, res) {
         address = req.body.address,
         postal_code = req.body.postal_code;
 
-    var house_sql_query = "insert into house values(" + house_id + ", " + stories + ", '" + type + "', " + num_bedrooms + ", " + num_bathrooms + ", '" + parking + "', '" + basement + "', '" + address + "', " + postal_code + ")";
+    var house_sql_query = "insert into house values(" + house_id + ", " + stories + ", '" + type + "', " + num_bedrooms + ", " + num_bathrooms + ", '" + parking + "', '" + basement + "', '" + address + "', " + postal_code + ")" + ";";
     con.query(house_sql_query, function (err, result, fields) {
         //if any information is entered incorrectly or empty triggers a sql error
         if (err) {
@@ -182,7 +182,7 @@ app.post("/add", function (req, res) {
         //if adding new house into house table is successful, move on to adding the listing
         else if (result.affectedRows = 1) {
             console.log("ADD DONE");
-            var listing_sql_query = "insert into listing values(" + listingId + ", " + usernameID + ", " + house_id + ", '" + description + "', '" + date_listed + "', " + rent + ", '" + utilities + "', '" + date_available + "')";
+            var listing_sql_query = "insert into listing values(" + listingId + ", " + usernameID + ", " + house_id + ", '" + description + "', '" + date_listed + "', " + rent + ", '" + utilities + "', '" + date_available + "')" + ";";
             //adding new listing into listing table
             con.query(listing_sql_query, function (err, result, fields) {
                 console.log(listing_sql_query);
@@ -204,6 +204,24 @@ app.post("/add", function (req, res) {
     })
 });
 
+app.post("/update", function (req, res) {
+    var listing_id = req.body.listingID_for_update;
+    var rent = req.body.new_rent;
+
+    var sql_query = "update listing set rent = " + rent + " where listing_id = " + listing_id + " and agent_id = " + usernameID + ";";
+
+    con.query(sql_query, function (err, result, fields) {
+        if (err) {
+            res.redirect('/update_fail');
+        }
+        else if (result.affectedRows > 0) {
+            res.redirect('/update_done'); //if successful, redirect to successful page
+        }
+        else {
+            res.redirect('/update_fail');
+        }
+    })
+})
 
 //Nadin:
 app.post("/search", function (req, res) {
