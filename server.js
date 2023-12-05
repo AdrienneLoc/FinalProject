@@ -23,7 +23,7 @@ var mysql = require('mysql');
 var con = mysql.createConnection({
   host: "localhost",
   user: "root",
-  password: "G!nP10bgq3C-v",  // use your own MySQL root password
+  password: "***************",  // use your own MySQL root password
   database: "finalproject"
 });
 
@@ -135,7 +135,7 @@ app.post("/login", function (req, res) {
     var password = req.body.password;
 
     //query to be used
-    var sql_query = "select agent_id, email, password from agent where email = '" + username + "' and password = '" + password + "'";
+    var sql_query = "select agent_id from agent where email = '" + username + "' and password = '" + password + "'";
 
     con.query(sql_query, function (err, result, fields) {
         if (err) {
