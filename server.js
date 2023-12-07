@@ -23,7 +23,7 @@ var mysql = require('mysql');
 var con = mysql.createConnection({
   host: "localhost",
   user: "root",
-  password: "******",  // use your own MySQL root password
+  password: "***********",  // use your own MySQL root password
   database: "finalproject"
 });
 
@@ -192,12 +192,25 @@ app.post("/add", function (req, res) {
                 console.log(listing_sql_query);
                 //if any information is entered incorrectly or is empty triggers a sql error
                 if (err) {
+                    //if there's an error with adding a new listing, then delete the newly added house from database and redirect to fail
+                    var delete_house_query = "delete from house where house_id =" + house_id;
+                    con.query(delete_house_query, function (err, result, fields) {
+                        if (affectdRows = 1) (
+                            console.log("house deleted")
+                        )
+                    })
                     res.redirect('/add_fail');
                 }
                 else if (result.affectedRows = 1) {
                     res.redirect('/add_done'); //if successful, redirect to done page
                 }
                 else {
+                    var delete_house_query = "delete from house where house_id =" + house_id;
+                    con.query(delete_house_query, function (err, result, fields) {
+                        if (affectdRows = 1) (
+                            console.log("house deleted")
+                        )
+                    })
                     res.redirect('/add_fail');
                 }
             })
