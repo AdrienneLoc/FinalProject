@@ -336,7 +336,7 @@ app.get("/listings", function (req, res) {
                     "<TD style=\"vertical-align:top\">" + result[i].house_id + "</TD>" +
                     "<TD style=\"vertical-align:top\">" + result[i].address + "</TD>" +
                     "<TD style=\"vertical-align:top\">" + result[i].postal_code + "</TD>" +
-                    "<TD style=\"vertical-align:top\">" + result[i].description + "</TD>" +
+                    "<TD style=\"vertical-align:top\">" + result[i].description+ result[i].+ result[i].detail.replace(detail, "<b style=\"color:blue\">"+detail+"</b>") + "<BR><BR></TD>" +
                     "<TD style=\"vertical-align:top\">" + result[i].date_listed + "</TD>" +
                     "<TD style=\"vertical-align:top\">" + result[i].rent + "</TD>" +
                     "<TD style=\"vertical-align:top\">" + result[i].utilities + "</TD>" +
