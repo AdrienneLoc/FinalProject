@@ -23,7 +23,7 @@ var mysql = require('mysql');
 var con = mysql.createConnection({
   host: "localhost",
   user: "root",
-  password: "************",  // use your own MySQL root password
+  password: "***********",  // use your own MySQL root password
   database: "finalproject"
 });
 
@@ -34,7 +34,7 @@ con.connect(function(err) {
   console.log("Connected to MySQL");
 });
 
-var usernameID= null; // variable to store the agent ID
+var usernameID= 789101; // variable to store the agent ID
 
 //******************************************************************************
 //*** File system module used for accessing files in nodejs (Nadin)
