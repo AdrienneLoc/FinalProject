@@ -111,7 +111,7 @@ app.get("/update_done", function (req, res) {
 });
 
 app.get("/update_fail", function (req, res) {
-    readAndServe("./upadate_fail.html",res)
+    readAndServe("./update_fail.html",res)
 
 });
 
