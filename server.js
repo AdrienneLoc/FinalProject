@@ -23,7 +23,7 @@ var mysql = require('mysql');
 var con = mysql.createConnection({
   host: "localhost",
   user: "root",
-  password: "***********",  // use your own MySQL root password
+  password: "******",  // use your own MySQL root password
   database: "finalproject"
 });
 
@@ -34,7 +34,8 @@ con.connect(function(err) {
   console.log("Connected to MySQL");
 });
 
-var usernameID= 789101; // variable to store the agent ID
+app.use(express.static('public')); //code to load in static css files
+var usernameID= null; // variable to store the agent ID
 
 //******************************************************************************
 //*** File system module used for accessing files in nodejs (Nadin)
@@ -59,6 +60,9 @@ app.get("/", function (req, res) {
 
 });
 
+app.get("/add.css", function (req, res) {
+    readAndServe("./add.css", res)
+});
 
 app.get("/login", function (req, res) {
     readAndServe("./login.html",res)
@@ -244,10 +248,15 @@ app.post("/search", function (req, res) {
     if (err)
          throw err;                  // SQL error
     else {
-         var html_body = "<HTML><STYLE>body{font-family:arial}</STYLE>";
-            html_body = html_body + "<BODY>";
-            html_body = html_body + "<img src=https://www.lawsonstate.edu/sites/www/Uploads/images/Programs_Of_Study/Academic_Programs/course%20descriptions.jpg width=500></img>";
-            html_body = html_body + "<TABLE BORDER=1 WIDTH=800>";
+        //adding bootstrap and style sheets, icons for navigation
+        var html_body = "<HTML><link href='https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css' rel='stylesheet' integrity = 'sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN' crossorigin = 'anonymous' ><link href='https://fonts.googleapis.com/icon?family=Material+Icons' rel = 'stylesheet' > <link rel='stylesheet' href='add.css'/>";
+        html_body = html_body + "<link rel='stylesheet' href='tables.css'/>"
+        html_body = html_body + "<BODY> <a href='http://localhost:3000/main' style='padding-left:0.1em; background-color:none'> <span class='material-icons' style='color:rgb(255,255,255,1); font-size:50px'>home</span></a> ";
+        html_body = html_body + "<a href='http://localhost:3000/search' style='padding-left:0.1em; background-color:none'> <span class='material-icons' style='color:rgb(255,255,255,1); font-size:50px'>search</span></a>"
+        html_body = html_body + "<div class='container justify-content-center align-items-center text-center'>";
+        html_body = html_body + "<img src=https://media.istockphoto.com/id/1449212413/photo/row-houses.jpg?s=1024x1024&w=is&k=20&c=2YgBTcwYWtlMcB_YDCses6iUytMCrGr-lTaTi_qxb20= width=500></img>";
+        html_body = html_body + "<div class='container - fluid'>";
+        html_body = html_body + "<table class='table table - striped mt - 5 ml - 5 mr - 5'>";
 
             //*** print column headings
             html_body = html_body + "<TR>";
@@ -268,12 +277,11 @@ app.post("/search", function (req, res) {
                     "<TD style=\"vertical-align:top\">" + result[i].date_available + "</TD></TR>");
 
 
-            html_body = html_body + "</TABLE>"; 
+            html_body = html_body + "</TABLE></div></div>"; 
                  
 
-				  //** finish off the html body with a link back to the search page
-				  html_body = html_body + "<BR><BR><BR><a href=http://localhost:3000/search>Back to search page</a><BR><BR><BR>";
-			      html_body = html_body + "</BODY></HTML>";
+		
+			html_body = html_body + "</BODY></HTML>";
 
                 console.log(html_body);             // send query results to the console
 			    res.send(html_body);                // send query results back to the browser
@@ -319,10 +327,14 @@ app.get("/listings", function (req, res) {
         if (err)
             throw err;
         else {
-            var html_body = "<HTML><STYLE>body{font-family:arial}</STYLE>";
-            html_body = html_body + "<BODY>";
-            html_body = html_body + "<img src=https://www.lawsonstate.edu/sites/www/Uploads/images/Programs_Of_Study/Academic_Programs/course%20descriptions.jpg width=500></img>";
-            html_body = html_body + "<TABLE BORDER=1 WIDTH=800>";
+            //adding bootstrap and style sheets, icons for navigation
+            var html_body = "<HTML><link href='https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css' rel='stylesheet' integrity = 'sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN' crossorigin = 'anonymous' ><link href='https://fonts.googleapis.com/icon?family=Material+Icons' rel = 'stylesheet' > <link rel='stylesheet' href='add.css'/>";
+            html_body = html_body + "<link rel='stylesheet' href='tables.css'/>"
+            html_body = html_body + "<BODY> <a href='http://localhost:3000/main' style='padding-left:0.1em; background-color:none'> <span class='material-icons' style='color:rgb(0,0,0); font-size:50px'>home</span></a> ";
+            html_body = html_body + "<div class='container justify-content-center align-items-center text-center'>";
+            html_body = html_body + "<img src=https://media.istockphoto.com/id/1449212413/photo/row-houses.jpg?s=1024x1024&w=is&k=20&c=2YgBTcwYWtlMcB_YDCses6iUytMCrGr-lTaTi_qxb20= width=500></img>";
+            html_body = html_body + "<div class='container - fluid'>";
+            html_body = html_body + "<table class='table table - striped mt - 5 ml - 5 mr - 5'>";
 
             //*** print column headings
             html_body = html_body + "<TR>";
@@ -343,13 +355,8 @@ app.get("/listings", function (req, res) {
                     "<TD style=\"vertical-align:top\">" + result[i].date_available + "</TD></TR>");
 
 
-            html_body = html_body + "</TABLE>";
-
-            //** finish off the html body with a link back to the main page
-            html_body = html_body + "<BR><BR><BR><a href=http://localhost:3000/main>Main Menu</a><BR><BR><BR>";
+            html_body = html_body + "</TABLE></div></div>";
             html_body = html_body + "</BODY></HTML>";
-
-            console.log(html_body);             // send query results to the console
             res.send(html_body);                // send query results back to the browser
         }
     });
