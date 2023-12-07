@@ -1,114 +1,143 @@
-<html>
-<body style="font-family:arial">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Add Listing</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" 
+                integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+          rel="stylesheet">
+    <link rel="stylesheet" href="add.css"/>
+</head>
+<body>
+        <div class="page-container bg-gradient" style="background-color:rgb(189, 147, 75)"> 
+                <a href="http://localhost:3000/main" style="padding-left:0.1em; background-color:none">
+                        <span class="material-icons" style="color:rgb(255, 255, 255, 1); font-size:50px">home</span>
+                </a>
+                <div class="container-fluid p-5 text-center">
+                        <h1>Add a New Listing</h1>
+                </div>
+        </div>
+        <div class="container">
+                <form name="add" action="http://localhost:3000/add" method="post">
+                                <div class="row">
+                                        <div class="col-lg-6 col-md-6 col-sm-12 mt-5" style="border:black">
+                                                <h2><em>Listing Information</em></h2>
+                                                <br><br>
+                                                <h4>
+                                                <label for="listingID">Listing ID:</label>
+                                                        <INPUT TYPE="TEXT" NAME="listingID" VALUE="" />
+                                                </h4>
+                                                <br/><br/>
+                                                <h4>
+                                                        <label for="description">Description:</label><br/>
+                                                                <TEXTAREA NAME="description" ROWS="7" COLS="45"></TEXTAREA>
+                                                </h4>
+                                                <h4>
+                                                        <label for="date_listed">Date Listed:</label>
+                                                        <INPUT TYPE="TEXT" NAME="date_listed" placeholder="YYYY-MM-DD" VALUE="" />
+                                                        <br><br>
+                                                       
+                                                </h4>
+                                                <h4>
+                                                        <label for="rent">Rent:</label>
+                                                        <INPUT TYPE="TEXT" NAME="rent" placeholder="eg. 12.00" VALUE="" />
+                                                        <br><br>
+                                                       
+                                                </h4>
+                                                <h4>
+                                                        <label for="utilities">Utilities are the Responsibility of:</label>
+                                                        <INPUT TYPE="radio" NAME="utilites" VALUE="tenant" /> <label style="font-size:20px">tenant</label>
+                                                        <INPUT TYPE="radio" NAME="utilities" VALUE="landlord" /> <label style="font-size:20px">landlord</label>
+                                                        <br><br>
+                                                       
+                                                </h4>
+                                                <h4>
+                                                        <label for="date_available">Date Available:</label>
+                                                        <INPUT TYPE="TEXT" NAME="date_available" placeholder="YYYY-MM-DD" VALUE="" />
+                                                        <br><br>
+                                                       
+                                                </h4>
+                                        </div>
+                                        <div class="col-lg-6 col-md-6 col-sm-12 bg-gradient" style="background-color:rgb(189, 147, 75)">
+                                                <label class="mt-5"><h2><em>House Information</em></h2></label>
+                                                <br><br>
+                                                <h4>
+                                                <label for="houseID">House ID:</label>
+                                                        <INPUT TYPE="TEXT" NAME="houseID" VALUE="" />
+                                                </h4>
+                                                <br/><br/>
+                                                <h4>
+                                                        <label for="stories">stories:</label>
+                                                        <SELECT NAME="stories">
+                                                                <OPTION SELECTED>1</OPTION>
+                                                                <OPTION>2</OPTION>
+                                                                <OPTION>3</OPTION>
+                                                                <OPTION>4</OPTION>
+                                                        </SELECT>
+                                                        <br><br>
+                                                </h4>
+                                                <h4>
+                                                        <label for="type">Type:</label>
+                                                        <SELECT NAME="type">
+                                                                <OPTION SELECTED>Single-Family</OPTION>
+                                                                <OPTION>Townhouse</OPTION>
+                                                                <OPTION>Duplex</OPTION>
+                                                                <OPTION>Apartment</OPTION>
+                                                                <OPTION>Condo</OPTION>
+                                                        </SELECT>
+                                                        <br><br>
+                                                </h4>
+                                                <h4>
+                                                        <label for="num_bedrooms">Number of Bedrooms:</label>
+                                                        <INPUT TYPE="TEXT" NAME="num_bedrooms" VALUE="" />
+                                                        <br><br>
+                                                       
+                                                </h4>
+                                                <h4>
+                                                        <label for="num_bathrooms">Number of Bathrooms:</label>
+                                                        <INPUT TYPE="TEXT" NAME="num_bathrooms" VALUE="" />
+                                                        <br><br>
+                                                       
+                                                </h4>
+                                                <h4>
+                                                        <label for="parking">Parking Availability:</label>
+                                                        <INPUT TYPE="radio" NAME="parking" VALUE="yes" /> <label style="font-size:20px">yes</label>
+                                                        <INPUT TYPE="radio" NAME="parking" VALUE="no" /> <label style="font-size:20px">no</label>
+                                                        <br><br>
+                                                       
+                                                </h4>
+                                                <h4>
+                                                        <label for="basement">Parking Availability:</label>
+                                                        <SELECT NAME="basement">
+                                                                <OPTION SELECTED>Finished</OPTION>
+                                                                <OPTION>Unfinished</OPTION>
+                                                                <OPTION>n/a</OPTION>
+                                                        </SELECT>
+                                                        <br><br>
+                                                       
+                                                </h4>
+                                                <h4>
+                                                        <label for="address">Address:</label>
+                                                        <INPUT TYPE="TEXT" NAME="address" placeholder="eg. 1111 Test Street Philadelphia, PA" VALUE="" />
+                                                        <br><br>
+                                                       
+                                                </h4>
+                                                <h4>
+                                                        <label for="postal_code">Postal Code:</label>
+                                                        <INPUT TYPE="TEXT" NAME="postal_code" VALUE="" />
+                                                        <br><br>
+                                                       
+                                                </h4>
+                                        </div>
+                                        <button type="submit" class="btn btn-primary" style="font-size:25px; background-color:rgb(79, 168, 98)">Submit</button>     
+                                </div>
+                                
+                </form>
+        </div>
 
-<h3 style="color:#ADD8E6">Add a new Listing</h3>
-
-<img src="https://www.pchf1.org/wp-content/uploads/2022/08/new.jpg" width=520 height=300></img>
-
-<BR><BR>
-<FORM NAME="add" ACTION="http://localhost:3000/add" METHOD="post">
-
-     <fieldset style="width: 500px">
-         <legend><b>Listing Info</b></legend>
-         <br><br>
-
-         Listing ID:
-         <INPUT TYPE="TEXT" NAME="listingID" VALUE="" >
-         <br><br>
-
-         Description: <br>
-         <TEXTAREA NAME="description" ROWS="7" COLS="45"></TEXTAREA>
-         <br><br>
-
-         Date Listed:
-         <INPUT TYPE="TEXT" NAME="date_listed" VALUE="" >
-         <br><br>
-
-         Rent:
-         <INPUT TYPE="TEXT" NAME="rent" VALUE="" >
-         <br><br>
-
-         Utilities are the responsibility of the:
-                <INPUT TYPE="radio" NAME="utilities" VALUE="tenant"> tenant
-		<INPUT TYPE="radio" NAME="utilities" VALUE="landlord"> landlord
-         <br><br>
-
-
-         Date Available:
-         <INPUT TYPE="TEXT" NAME="date_available" VALUE="" >
-         <br><br>
-
-
-     </fieldset>
-
-     <br>
-     <fieldset style="width: 500px">
-         <legend><b>House Info</b></legend>
-         <br><br>
-
-         House ID:
-         <INPUT TYPE="TEXT" NAME="houseID" VALUE="" >
-         <br><br>
-
-
-         Stories:
-               <SELECT NAME="stories">
-                        <OPTION SELECTED>1</OPTION>
-                        <OPTION>2</OPTION>
-                        <OPTION>3</OPTION>
-                        <OPTION>4</OPTION>
-                </SELECT>
-         <br><br>
-
-
-         Type:
-               <SELECT NAME="type">
-                        <OPTION SELECTED>Single-Family</OPTION>
-                        <OPTION>Townhouse</OPTION>
-                        <OPTION>Duplex</OPTION>
-                        <OPTION>Apartment</OPTION>
-                        <OPTION>Condo</OPTION>
-                </SELECT>
-         <br><br>
-
-
-         Number of bedrooms:
-         <INPUT TYPE="TEXT" NAME="num_bedrooms" VALUE="" >
-         <br><br>
-
-	 Number of bathrooms:
-         <INPUT TYPE="TEXT" NAME="num_bathrooms" VALUE="" >
-         <br><br>
-
-         Parking availability:
-                <INPUT TYPE="radio" NAME="parking" VALUE="yes"> yes
-		<INPUT TYPE="radio" NAME="parking" VALUE="no"> no
-         <br><br>
-
-
-	 Basement:
-               <SELECT NAME="basement">
-                        <OPTION SELECTED>Finished</OPTION>
-                        <OPTION>Unfinished</OPTION>
-                        <OPTION>n/a</OPTION>
-                </SELECT>
-         <br><br>
-
-
-         Address:
-         <INPUT TYPE="TEXT" NAME="address" VALUE="" >
-         <br><br>
-
-
-         Postal Code:
-         <INPUT TYPE="TEXT" NAME="postal_code" VALUE="" >
-         <br><br>
-     </fieldset>
-<br>
-<div align="left">&nbsp;&nbsp;<INPUT TYPE="submit" VALUE="Add House Listing"></div>
-</FORM>
-
-<BR><BR><a href=http://localhost:3000/main>Main Menu</a><BR><BR><BR>
+<!--<BR><BR><a href=http://localhost:3000/main>Main Menu</a><BR><BR><BR>-->
 
 </body>
 </html>
