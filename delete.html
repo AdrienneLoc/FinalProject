@@ -11,30 +11,30 @@
     <link rel="stylesheet" href="add.css"/>
 </head>
 <body>
-        <div class="page-container bg-gradient" style="background-color:rgb(189, 147, 75)"> 
-                <a href="http://localhost:3000/main" style="padding-left:0.1em; background-color:none">
-                        <span class="material-icons" style="color:rgb(255, 255, 255, 1); font-size:50px">home</span>
-                </a>
-                <div class="container-fluid p-5 text-center">
-                        <h1>Delete a Listing</h1>
-                </div>
-        </div>
-        <div class="container justify-content-center align-items-center">
-            <FORM NAME="delete" ACTION="http://localhost:3000/delete" METHOD="post">
-                <div class="container justify-content-center align-items-center text-center">
-                    <h2>
-                        <label for="listingID"><h2>The Listing to be deleted</h2></label>
-                        <br/><br/>
-                        <h3>Enter the Listing ID of the listing you want to delete:</h3><br/><br/>
-                        <INPUT TYPE="TEXT" NAME="listingID_for_delete" style="width:300px" VALUE="" />
-                    </h2>
-                </div>
-                <br/><br/>
-                <div class="container justify-content-center align-items-center text-center">
-                    <button type="submit" class="btn btn-danger" style="font-size:25px">Delete</button>
-                </div>
-            </FORM>
-        </div>
+    <div class="page-container bg-gradient" style="background-color:rgb(189, 147, 75)"> 
+            <a href="http://localhost:3000/main" style="padding-left:0.1em; background-color:none">
+                    <span class="material-icons" style="color:rgb(255, 255, 255, 1); font-size:50px">home</span>
+            </a>
+            <div class="container-fluid p-5 text-center">
+                    <h1>Delete a Listing</h1>
+            </div>
+    </div>
+    <div class="container justify-content-center align-items-center">
+        <FORM NAME="delete" ACTION="http://localhost:3000/delete" METHOD="post">
+            <div class="container justify-content-center align-items-center text-center">
+                <h2>
+                    <label for="listingID"><h2>The Listing to be deleted</h2></label>
+                    <br/><br/>
+                    <h3>Enter the Listing ID of the listing you want to delete:</h3><br/><br/>
+                    <INPUT TYPE="TEXT" NAME="listingID_for_delete" style="width:300px" VALUE="" />
+                </h2>
+            </div>
+            <br/><br/>
+            <div class="container justify-content-center align-items-center text-center">
+                <button type="submit" class="btn btn-danger" style="font-size:25px">Delete</button>
+            </div>
+        </FORM>
+    </div>
 </body>
 </html>
 
