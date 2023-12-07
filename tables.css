@@ -1,0 +1,10 @@
+td, tr, th {
+    text-align:center;
+    vertical-align:middle;
+    word-wrap: break-word;
+    min-width: 160px;
+    max-width: 160px;
+}
+.table-striped>tr:nth-child(odd){
+    background-color:rgb(189, 147, 75);
+ }
