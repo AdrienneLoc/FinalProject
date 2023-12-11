@@ -311,7 +311,7 @@ app.post("/delete", function (req, res) {
 
     con.query(sql_query, function (err, result, fields) { // execute the SQL string
     if (err)
-        res.send("Illegal Query" + err);                  // SQL error
+        res.redirect("http://localhost:3000/delete_fail");                  // redirect to fail page
 
     else {
                 console.log(sql_query);                                   // send query results to the console
