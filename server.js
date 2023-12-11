@@ -23,7 +23,7 @@ var mysql = require('mysql');
 var con = mysql.createConnection({
   host: "localhost",
   user: "root",
-  password: "***********",  // use your own MySQL root password
+  password: "G!nP10bgq3C-v",  // use your own MySQL root password
   database: "finalproject"
 });
 
@@ -65,6 +65,7 @@ app.get("/add.css", function (req, res) {
 });
 
 app.get("/login", function (req, res) {
+    usernameID = null;
     readAndServe("./login.html",res)
 
 });
@@ -143,7 +144,7 @@ app.post("/login", function (req, res) {
 
     con.query(sql_query, function (err, result, fields) {
         if (err) {
-            throw err;
+            res.redirect('/unauthorized_access'); //instead of shutting down, redirect
         }
        //if results found, process results
         else if (result.length > 0) {
@@ -152,7 +153,6 @@ app.post("/login", function (req, res) {
         }
         //take to error page if no results
         else {
-            console.log("reached second if");
             res.redirect('/unauthorized_access');
         }
     })
