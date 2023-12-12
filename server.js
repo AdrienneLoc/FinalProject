@@ -1,3 +1,10 @@
+//*** Nadin Musallam and Adrienne Loc
+//*** Database Systems
+//*** December 11, 2023
+//*** Final Project: The purpose of this project was to understand and explore the connection between web pages, the server, and the database.
+
+
+
 //******************************************************************************
 //*** set up an HTTP server off port 3000 (Nadin)
 //******************************************************************************
