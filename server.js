@@ -130,6 +130,11 @@ app.get("/add_fail", function (req, res) {
 
 });
 
+app.get("/fail", function (req, res) {
+    readAndServe("./fail.html",res)
+
+});
+
 /* ******************************************************************************************
 This routing table handles all the post request sent from the browser (Adrienne + Nadin)
 ********************************************************************************************* */
@@ -267,12 +272,17 @@ app.post("/search", function (req, res) {
     var postal_code = req.body.postal_code; 
     var sql_query;
 
+    //if user enters both, search bo both	
     if(detail != "" && postal_code != ""){
     sql_query = "select listing_id, house_id, address, postal_code, description, date_listed, rent, utilities, date_available from listing natural join house where description like '%" + detail + "%' and postal_code like '%" + postal_code + "%' and agent_id = " + usernameID + ";"; }
+    
+    //else if user enters one, search by that one
     else if(detail != "" && postal_code == ""){
     sql_query = "select listing_id, house_id, address, postal_code, description, date_listed, rent, utilities, date_available from listing natural join house where description like '%" + detail + "%' and agent_id = " + usernameID + ";"; }
     else if(postal_code != "" && detail == ""){
     sql_query = "select listing_id, house_id, address, postal_code, description, date_listed, rent, utilities, date_available from listing natural join house where postal_code like '%" + postal_code + "%' and agent_id = " + usernameID + ";"; }
+
+    //else, show the whole listings list	    
     else{
     sql_query = "select listing_id, house_id, address, postal_code, description, date_listed, rent, utilities, date_available from listing natural join house where agent_id = " + usernameID + ";"; }
 
@@ -280,7 +290,7 @@ app.post("/search", function (req, res) {
 
     con.query(sql_query, function (err, result, fields) { // execute the SQL string
     if (err)
-         throw err;                  // SQL error
+         res.redirect("http://localhost:3000/fail");                  // redirect to fail page
     else {
         //adding bootstrap and style sheets, icons for navigation
         var html_body = "<HTML><link href='https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css' rel='stylesheet' integrity = 'sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN' crossorigin = 'anonymous' ><link href='https://fonts.googleapis.com/icon?family=Material+Icons' rel = 'stylesheet' > <link rel='stylesheet' href='add.css'/>";
@@ -340,7 +350,7 @@ app.post("/delete", function (req, res) {
                 if(affectedRows>0){
 	        	res.redirect("http://localhost:3000/delete_done");}  // redirect to the page that reflects the action done
                 else{
-                	res.redirect("http://localhost:3000/delete_fail");} 	
+                	res.redirect("http://localhost:3000/delete_fail");}   //redirect to fail page
 		
  
          }
@@ -359,7 +369,7 @@ app.get("/listings", function (req, res) {
     var sql_query = "select listing_id, house_id, address, postal_code, description, date_listed, rent, utilities, date_available from listing natural join house where agent_id = " + usernameID +";";
     con.query(sql_query, function (err, result, fields) {
         if (err)
-            throw err;
+            res.redirect("http://localhost:3000/fail");                  // redirect to fail page
         else {
             //adding bootstrap and style sheets, icons for navigation
             var html_body = "<HTML><link href='https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css' rel='stylesheet' integrity = 'sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN' crossorigin = 'anonymous' ><link href='https://fonts.googleapis.com/icon?family=Material+Icons' rel = 'stylesheet' > <link rel='stylesheet' href='add.css'/>";
