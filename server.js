@@ -23,7 +23,7 @@ var mysql = require('mysql');
 var con = mysql.createConnection({
   host: "localhost",
   user: "root",
-  password: "G!nP10bgq3C-v",  // use your own MySQL root password
+  password: "************",  // use your own MySQL root password
   database: "finalproject"
 });
 
