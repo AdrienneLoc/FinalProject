@@ -182,22 +182,21 @@ app.post("/add", function (req, res) {
         basement = req.body.basement,
         address = req.body.address,
         postal_code = req.body.postal_code;
-    //query for house
-    //var house_sql_query = "insert into house values(" + house_id + ", " + stories + ", '" + type + "', " + num_bedrooms + ", " + num_bathrooms + ", '" + parking + "', '" + basement + "', '" + address + "', " + postal_code + ")" + ";";
+   
     //query for listing
     var listing_sql_query = "insert into listing values(" + listingId + ", " + usernameID + ", " + house_id + ", '" + description + "', '" + date_listed + "', " + rent + ", '" + utilities + "', '" + date_available + "')" + ";";
+
+    //if new listing, then adding new house
     if (house_status === "New House") {
         var house_sql_query = "insert into house values(" + house_id + ", " + stories + ", '" + type + "', " + num_bedrooms + ", " + num_bathrooms + ", '" + parking + "', '" + basement + "', '" + address + "', " + postal_code + ")" + ";";
         con.query(house_sql_query, function (err, result, fields) {
             //if any information is entered incorrectly or empty triggers a sql error
             if (err) {
-                res.redirect('/add_fail'); //instead of becoming unavailable, redirect to fail page
+                res.redirect('/add_fail'); //redirect to fail page
             }
             //if adding new house into house table is successful, move on to adding the listing
             else if (result.affectedRows = 1) {
                 console.log("ADD DONE");
-                //var listing_sql_query = "insert into listing values(" + listingId + ", " + usernameID + ", " + house_id + ", '" + description + "', '" + date_listed + "', " + rent + ", '" + utilities + "', '" + date_available + "')" + ";";
-                //adding new listing into listing table
                 con.query(listing_sql_query, function (err, result, fields) {
                     //if any information is entered incorrectly or is empty triggers a sql error
                     if (err) {
@@ -229,6 +228,7 @@ app.post("/add", function (req, res) {
             }
         })
     }
+    //if relisting then not adding new house or deleting house
     else if (house_status === "Relisting") {
         con.query(listing_sql_query, function (err, result, fields) {
             if (err) {
