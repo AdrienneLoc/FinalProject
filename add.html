@@ -22,6 +22,7 @@
         <div class="container">
                 <form name="add" action="http://localhost:3000/add" method="post">
                                 <div class="row">
+                                        <!---------Listing Information-------------------------------->
                                         <div class="col-lg-6 col-md-6 col-sm-12 mt-5" style="border:black">
                                                 <h2><em>Listing Information</em></h2>
                                                 <br><br>
@@ -64,10 +65,18 @@
                                                 <label class="mt-5"><h2><em>House Information</em></h2></label>
                                                 <br><br>
                                                 <h4>
+                                                <!-----------------------------House Information--------------------------------------->
                                                 <label for="houseID">House ID:</label>
                                                         <INPUT TYPE="TEXT" NAME="houseID" VALUE="" />
                                                 </h4>
                                                 <br/><br/>
+                                                <h4>
+                                                        <label for="houseStatus">New House or Relisting:</label>
+                                                        <INPUT TYPE="radio" NAME="houseStatus" VALUE="New House" /> <label style="font-size:20px">New House</label>
+                                                        <INPUT TYPE="radio" NAME="houseStatus" VALUE="Relisting" /> <label style="font-size:20px">Relisting</label>
+                                                        <br><br>
+                                                       
+                                                </h4>
                                                 <h4>
                                                         <label for="stories">stories:</label>
                                                         <SELECT NAME="stories">
